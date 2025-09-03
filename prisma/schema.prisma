@@ -1,0 +1,177 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Drink {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  category    String
+  isSeasonal  Boolean  @default(false)
+  description String?
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  drinkIngredients DrinkIngredient[]
+  recipeSteps      RecipeStep[]
+  drinkOptions     DrinkOption[]
+  drinkCupStandards DrinkCupStandard[]
+  gameQuestions    GameQuestion[]
+}
+
+model Ingredient {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  type        String
+  description String?
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  drinkIngredients DrinkIngredient[]
+}
+
+model DrinkIngredient {
+  id            Int        @id @default(autoincrement())
+  drinkId       Int
+  ingredientId  Int
+  amount        String
+  unit          String
+  stepOrder     Int
+  createdAt     DateTime   @default(now())
+
+  // Relations
+  drink       Drink      @relation(fields: [drinkId], references: [id], onDelete: Cascade)
+  ingredient  Ingredient @relation(fields: [ingredientId], references: [id], onDelete: Cascade)
+
+  @@unique([drinkId, ingredientId, stepOrder])
+}
+
+model RecipeStep {
+  id        Int      @id @default(autoincrement())
+  drinkId   Int
+  stepOrder Int
+  instruction String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  drink Drink @relation(fields: [drinkId], references: [id], onDelete: Cascade)
+
+  @@unique([drinkId, stepOrder])
+}
+
+model Option {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  drinkOptions DrinkOption[]
+}
+
+model DrinkOption {
+  id        Int      @id @default(autoincrement())
+  drinkId   Int
+  optionId  Int
+  value     String
+  createdAt DateTime @default(now())
+
+  // Relations
+  drink  Drink  @relation(fields: [drinkId], references: [id], onDelete: Cascade)
+  option Option @relation(fields: [optionId], references: [id], onDelete: Cascade)
+
+  @@unique([drinkId, optionId])
+}
+
+model CupSize {
+  id            Int      @id @default(autoincrement())
+  name          String   @unique
+  hotVolumeOz   Int
+  coldVolumeOz  Int
+  standardShots Int
+  standardPumps Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  drinkCupStandards DrinkCupStandard[]
+}
+
+model DrinkCupStandard {
+  id           Int      @id @default(autoincrement())
+  drinkId      Int
+  sizeId       Int
+  customShots  Int?
+  customPumps  Int?
+  createdAt    DateTime @default(now())
+
+  // Relations
+  drink    Drink    @relation(fields: [drinkId], references: [id], onDelete: Cascade)
+  cupSize  CupSize  @relation(fields: [sizeId], references: [id], onDelete: Cascade)
+
+  @@unique([drinkId, sizeId])
+}
+
+model GameQuestion {
+  id              Int      @id @default(autoincrement())
+  drinkId         Int?
+  question        String
+  choices         String   // JSON string of choices
+  correctIndex    Int
+  explanation     String?
+  difficulty      String   @default("beginner") // beginner, intermediate, advanced
+  category        String   // recipe, technique, ingredient, etc.
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  drink Drink? @relation(fields: [drinkId], references: [id])
+
+  @@index([difficulty])
+  @@index([category])
+}
+
+model GameSession {
+  id        Int      @id @default(autoincrement())
+  playerName String
+  score     Int      @default(0)
+  totalQuestions Int @default(0)
+  completedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([playerName])
+  @@index([score])
+}
+
+model GameAttempt {
+  id            Int      @id @default(autoincrement())
+  sessionId     Int
+  questionId    Int
+  selectedAnswer Int
+  isCorrect     Boolean
+  timeSpent     Int      // in seconds
+  createdAt     DateTime @default(now())
+
+  // Relations
+  session   GameSession   @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  question  GameQuestion  @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([questionId])
+}
+
+

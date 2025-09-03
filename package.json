@@ -1,0 +1,36 @@
+{
+  "name": "starbucks-barista-game",
+  "version": "1.0.0",
+  "description": "Interactive Starbucks barista training game built with Next.js and TypeScript",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.15.0",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "autoprefixer": "^10.4.21",
+    "next": "^15.5.2",
+    "next-mdx-remote": "^5.0.0",
+    "postcss": "^8.5.6",
+    "prisma": "^6.15.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-markdown": "^10.1.0",
+    "tailwindcss": "^4.1.12",
+    "typescript": "^5.9.2"
+  },
+  "keywords": ["starbucks", "barista", "training", "game", "nextjs", "typescript"],
+  "author": "",
+  "license": "ISC"
+}
+
+
