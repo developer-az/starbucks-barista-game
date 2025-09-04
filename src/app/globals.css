@@ -1,42 +1,534 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 245, 245, 240;
-  --background-end-rgb: 255, 255, 255;
+  --starbucks-green: #006241;
+  --starbucks-darkgreen: #004C3F;
+  --starbucks-gold: #C8A27A;
+  --starbucks-cream: #F5F5F0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
   font-family: 'Inter', system-ui, sans-serif;
+  background-color: #f9fafb;
+  color: #1f2937;
+  line-height: 1.6;
 }
 
-@layer components {
-  .btn-primary {
-    @apply bg-starbucks-green hover:bg-starbucks-darkgreen text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.btn-primary {
+  background-color: var(--starbucks-green);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--starbucks-darkgreen);
+}
+
+.btn-secondary {
+  background-color: var(--starbucks-gold);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #b8956a;
+}
+
+.card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.game-card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  transition: box-shadow 0.2s;
+}
+
+.game-card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem 0;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--starbucks-darkgreen);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: #6b7280;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--starbucks-green);
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 768px) {
+  .grid-cols-3,
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
   }
-  
-  .btn-secondary {
-    @apply bg-starbucks-gold hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+.space-y-6 > * + * {
+  margin-top: 1.5rem;
+}
+
+.space-y-8 > * + * {
+  margin-top: 2rem;
+}
+
+.space-x-4 > * + * {
+  margin-left: 1rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.text-starbucks-darkgreen {
+  color: var(--starbucks-darkgreen);
+}
+
+.text-starbucks-green {
+  color: var(--starbucks-green);
+}
+
+.text-starbucks-gold {
+  color: var(--starbucks-gold);
+}
+
+.text-gray-600 {
+  color: #6b7280;
+}
+
+.text-gray-500 {
+  color: #9ca3af;
+}
+
+.bg-starbucks-green {
+  background-color: var(--starbucks-green);
+}
+
+.bg-starbucks-gold {
+  background-color: var(--starbucks-gold);
+}
+
+.text-white {
+  color: white;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.rounded-2xl {
+  border-radius: 1rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.p-8 {
+  padding: 2rem;
+}
+
+.p-12 {
+  padding: 3rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.max-w-3xl {
+  max-width: 48rem;
+}
+
+.max-w-4xl {
+  max-width: 56rem;
+}
+
+.max-w-7xl {
+  max-width: 80rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-2 {
+  height: 0.5rem;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.border-2 {
+  border-width: 2px;
+}
+
+.border-gray-200 {
+  border-color: #e5e7eb;
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-200 {
+  transition-duration: 200ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.opacity-90 {
+  opacity: 0.9;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.leading-tight {
+  line-height: 1.25;
+}
+
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.bg-gray-200 {
+  background-color: #e5e7eb;
+}
+
+.bg-gray-50 {
+  background-color: #f9fafb;
+}
+
+.bg-green-100 {
+  background-color: #dcfce7;
+}
+
+.bg-red-100 {
+  background-color: #fee2e2;
+}
+
+.bg-blue-50 {
+  background-color: #eff6ff;
+}
+
+.bg-yellow-100 {
+  background-color: #fef3c7;
+}
+
+.border-green-500 {
+  border-color: #10b981;
+}
+
+.border-red-500 {
+  border-color: #ef4444;
+}
+
+.border-blue-200 {
+  border-color: #bfdbfe;
+}
+
+.text-green-800 {
+  color: #166534;
+}
+
+.text-green-600 {
+  color: #16a34a;
+}
+
+.text-red-800 {
+  color: #991b1b;
+}
+
+.text-red-600 {
+  color: #dc2626;
+}
+
+.text-blue-800 {
+  color: #1e40af;
+}
+
+.text-blue-700 {
+  color: #1d4ed8;
+}
+
+.text-yellow-800 {
+  color: #92400e;
+}
+
+.w-16 {
+  width: 4rem;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
+.w-6 {
+  width: 1.5rem;
+}
+
+.h-6 {
+  height: 1.5rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
-  
-  .card {
-    @apply bg-white rounded-xl shadow-lg p-6 border border-gray-100;
+  to {
+    transform: rotate(360deg);
   }
-  
-  .game-card {
-    @apply bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-200;
-  }
+}
+
+.border-t-transparent {
+  border-top-color: transparent;
+}
+
+.border-4 {
+  border-width: 4px;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 
