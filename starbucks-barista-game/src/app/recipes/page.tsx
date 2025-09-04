@@ -129,6 +129,7 @@ const sampleDrinks: Drink[] = [
 export default function RecipesPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [searchQuery, setSearchQuery] = useState('')
+  const [selectedRecipe, setSelectedRecipe] = useState<Drink | null>(null)
 
   const categories = ['all', ...Array.from(new Set(sampleDrinks.map(drink => drink.category)))]
 
@@ -138,6 +139,14 @@ export default function RecipesPage() {
                          drink.description.toLowerCase().includes(searchQuery.toLowerCase())
     return matchesCategory && matchesSearch
   })
+
+  const handleViewRecipe = (drink: Drink) => {
+    setSelectedRecipe(drink)
+  }
+
+  const closeRecipeModal = () => {
+    setSelectedRecipe(null)
+  }
 
   return (
     <div className="max-w-6xl mx-auto space-y-8">
@@ -232,13 +241,97 @@ export default function RecipesPage() {
                 </ul>
               </div>
 
-              <button className="w-full btn-primary text-sm py-2">
+              <button 
+                className="w-full btn-primary text-sm py-2"
+                onClick={() => handleViewRecipe(drink)}
+              >
                 View Full Recipe
               </button>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Recipe Detail Modal */}
+      {selectedRecipe && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6 space-y-6">
+              {/* Header */}
+              <div className="flex items-center justify-between">
+                <h2 className="text-3xl font-bold text-starbucks-darkgreen">
+                  {selectedRecipe.name}
+                </h2>
+                <button
+                  onClick={closeRecipeModal}
+                  className="text-gray-400 hover:text-gray-600 text-2xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+
+              {/* Recipe Info */}
+              <div className="flex items-center gap-4">
+                <span className="px-3 py-1 bg-starbucks-green text-white text-sm font-medium rounded-full">
+                  {selectedRecipe.category}
+                </span>
+                {selectedRecipe.isSeasonal && (
+                  <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm font-medium rounded-full">
+                    Seasonal
+                  </span>
+                )}
+              </div>
+
+              <p className="text-gray-600 text-lg">{selectedRecipe.description}</p>
+
+              {/* Ingredients */}
+              <div className="space-y-3">
+                <h3 className="text-xl font-semibold text-starbucks-darkgreen">Ingredients</h3>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  {selectedRecipe.ingredients.map((ingredient, index) => (
+                    <li key={index} className="flex items-center space-x-2">
+                      <span className="w-2 h-2 bg-starbucks-green rounded-full"></span>
+                      <span className="text-gray-700">{ingredient}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Steps */}
+              <div className="space-y-3">
+                <h3 className="text-xl font-semibold text-starbucks-darkgreen">Preparation Steps</h3>
+                <ol className="space-y-3">
+                  {selectedRecipe.steps.map((step, index) => (
+                    <li key={index} className="flex space-x-3">
+                      <span className="flex-shrink-0 w-8 h-8 bg-starbucks-green text-white rounded-full flex items-center justify-center text-sm font-bold">
+                        {index + 1}
+                      </span>
+                      <span className="text-gray-700 leading-relaxed">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3 pt-4">
+                <button
+                  onClick={closeRecipeModal}
+                  className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  Close
+                </button>
+                <Link
+                  href="/game"
+                  className="flex-1 btn-primary text-center py-3"
+                  onClick={closeRecipeModal}
+                >
+                  Practice This Recipe
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Call to Action */}
       <div className="text-center space-y-4">

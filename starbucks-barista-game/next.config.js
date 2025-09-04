@@ -16,6 +16,11 @@ const nextConfig = {
       },
     ],
   },
+  // Suppress hydration warnings for browser extension conflicts
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
+  },
 }
 
 module.exports = nextConfig

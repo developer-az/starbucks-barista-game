@@ -16,7 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-starbucks-cream">
+      <body 
+        className="min-h-screen bg-starbucks-cream"
+        suppressHydrationWarning={true}
+      >
         <header className="bg-starbucks-green text-white shadow-lg">
           <div className="container mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
