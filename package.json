@@ -25,12 +25,17 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-markdown": "^10.1.0",
-    "tailwindcss": "^4.1.12",
+    "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2"
   },
-  "keywords": ["starbucks", "barista", "training", "game", "nextjs", "typescript"],
+  "keywords": [
+    "starbucks",
+    "barista",
+    "training",
+    "game",
+    "nextjs",
+    "typescript"
+  ],
   "author": "",
   "license": "ISC"
 }
-
-
