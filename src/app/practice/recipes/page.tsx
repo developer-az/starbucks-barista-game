@@ -134,11 +134,15 @@ export default function RecipeBuilderPage() {
   const getCurrentStep = () => CARAMEL_MACCHIATO_RECIPE.steps[currentStep]
   const getCurrentStepIngredients = () => {
     const step = getCurrentStep()
-    return CARAMEL_MACCHIATO_RECIPE.ingredients.filter(ingredient => {
-      if (step.order <= 2) return ingredient.timing === 'beginning'
-      if (step.order <= 5) return ingredient.timing === 'middle'
-      return ingredient.timing === 'end'
-    })
+    // Find all unique timings in the recipe, in the order they appear
+    const uniqueTimings = Array.from(
+      new Set(CARAMEL_MACCHIATO_RECIPE.ingredients.map(ingredient => ingredient.timing))
+    )
+    // Map step order to timing by dividing steps evenly among timings
+    const stepsCount = CARAMEL_MACCHIATO_RECIPE.steps.length
+    const timingIndex = Math.floor((step.order - 1) * uniqueTimings.length / stepsCount)
+    const timingForStep = uniqueTimings[timingIndex]
+    return CARAMEL_MACCHIATO_RECIPE.ingredients.filter(ingredient => ingredient.timing === timingForStep)
   }
 
   const handleIngredientAdd = (ingredient: Ingredient) => {
