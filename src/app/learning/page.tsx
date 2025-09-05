@@ -244,7 +244,8 @@ export default function LearningPage() {
                     <div className="mt-1">
                       {module.prerequisites.map(prereqId => {
                         const prereq = LEARNING_MODULES.find(m => m.id === prereqId)
-                        const isCompleted = getModuleProgress(prereqId)?.completedSteps.length > 0
+                        const progress = getModuleProgress(prereqId)
+                        const isCompleted = progress ? progress.completedSteps.length > 0 : false
                         return (
                           <span
                             key={prereqId}

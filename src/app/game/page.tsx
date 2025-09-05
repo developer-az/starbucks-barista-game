@@ -5,7 +5,9 @@ import { useRouter } from 'next/navigation'
 import GameCard from '@/components/GameCard'
 import GameProgress from '@/components/GameProgress'
 import GameResults from '@/components/GameResults'
+import DrinkSelector from '@/components/DrinkSelector'
 import { GameQuestion, GameSession } from '@/types/game'
+import { getQuestionsForDrink, getMixedQuestions, getAllDrinkKeys } from '@/data/gameQuestions'
 
 export default function GamePage() {
   const [currentStep, setCurrentStep] = useState(0)
@@ -16,6 +18,8 @@ export default function GamePage() {
   const [questions, setQuestions] = useState<GameQuestion[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [gameCompleted, setGameCompleted] = useState(false)
+  const [gameMode, setGameMode] = useState<'selection' | 'playing' | 'completed'>('selection')
+  const [selectedDrink, setSelectedDrink] = useState<string | null>(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -29,82 +33,34 @@ export default function GamePage() {
       updatedAt: new Date(),
     }
     setGameSession(session)
-    
-    // Load sample questions (in a real app, these would come from the database)
-    const sampleQuestions: GameQuestion[] = [
-      {
-        id: 1,
-        question: 'Which syrup is used in the Iced Brown Sugar Oatmilk Shaken Espresso?',
-        choices: JSON.stringify(['Vanilla', 'Brown Sugar', 'Caramel', 'Hazelnut']),
-        correctIndex: 1,
-        explanation: 'The Iced Brown Sugar Oatmilk Shaken Espresso uses brown sugar syrup, which gives it its distinctive sweet, molasses-like flavor.',
-        difficulty: 'beginner',
-        category: 'ingredient',
-        drinkId: null,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        id: 2,
-        question: 'How many times should you shake the Iced Brown Sugar Oatmilk Shaken Espresso?',
-        choices: JSON.stringify(['5-10 times', '10-20 times', '20-30 times', 'Until tired']),
-        correctIndex: 1,
-        explanation: 'The drink should be shaken vigorously 10-20 times to create the signature foam and ensure proper mixing of ingredients.',
-        difficulty: 'beginner',
-        category: 'technique',
-        drinkId: null,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        id: 3,
-        question: 'What type of espresso is used in the Iced Brown Sugar Oatmilk Shaken Espresso?',
-        choices: JSON.stringify(['Dark Roast', 'Blonde Roast', 'Medium Roast', 'Decaf']),
-        correctIndex: 1,
-        explanation: 'Blonde espresso roast is used because it provides a smoother, less bitter flavor that complements the brown sugar syrup.',
-        difficulty: 'intermediate',
-        category: 'ingredient',
-        drinkId: null,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        id: 4,
-        question: 'What is the correct order for making a Caramel Macchiato?',
-        choices: JSON.stringify([
-          'Espresso first, then milk, then caramel',
-          'Vanilla syrup, steamed milk, espresso, caramel drizzle',
-          'Milk first, then espresso, then caramel',
-          'Caramel first, then espresso, then milk'
-        ]),
-        correctIndex: 1,
-        explanation: 'The correct order is: vanilla syrup in cup, steamed milk, espresso shots poured through the center, then caramel drizzle on top.',
-        difficulty: 'intermediate',
-        category: 'technique',
-        drinkId: null,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        id: 5,
-        question: 'How many pumps of syrup does a Grande drink typically receive?',
-        choices: JSON.stringify(['2 pumps', '3 pumps', '4 pumps', '5 pumps']),
-        correctIndex: 2,
-        explanation: 'Grande drinks typically receive 4 pumps of syrup following the 4-ounce rule (4 ounces = 1 pump).',
-        difficulty: 'beginner',
-        category: 'measurement',
-        drinkId: null,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-    ]
-    
-    setQuestions(sampleQuestions)
-    if (gameSession) {
-      setGameSession({ ...gameSession, totalQuestions: sampleQuestions.length })
-    }
     setIsLoading(false)
   }, [])
+
+  const handleDrinkSelect = (drinkKey: string) => {
+    setSelectedDrink(drinkKey)
+    const drinkQuestions = getQuestionsForDrink(drinkKey)
+    setQuestions(drinkQuestions)
+    setGameSession(prev => prev ? { ...prev, totalQuestions: drinkQuestions.length } : null)
+    setGameMode('playing')
+    setCurrentStep(0)
+    setScore(0)
+    setSelectedAnswer(null)
+    setShowAnswer(false)
+    setGameCompleted(false)
+  }
+
+  const handleMixedMode = () => {
+    setSelectedDrink('mixed')
+    const mixedQuestions = getMixedQuestions(15) // 15 questions for mixed mode
+    setQuestions(mixedQuestions)
+    setGameSession(prev => prev ? { ...prev, totalQuestions: mixedQuestions.length } : null)
+    setGameMode('playing')
+    setCurrentStep(0)
+    setScore(0)
+    setSelectedAnswer(null)
+    setShowAnswer(false)
+    setGameCompleted(false)
+  }
 
   const handleAnswerSelect = (answerIndex: number) => {
     if (showAnswer) return // Prevent multiple selections
@@ -132,6 +88,7 @@ export default function GamePage() {
         setGameSession({ ...gameSession, completedAt: new Date() })
       }
       setGameCompleted(true)
+      setGameMode('completed')
     }
   }
 
@@ -141,6 +98,8 @@ export default function GamePage() {
     setSelectedAnswer(null)
     setShowAnswer(false)
     setGameCompleted(false)
+    setGameMode('selection')
+    setSelectedDrink(null)
     if (gameSession) {
       setGameSession({ ...gameSession, score: 0, completedAt: null })
     }
@@ -163,8 +122,19 @@ export default function GamePage() {
         score={score}
         totalQuestions={questions.length}
         onRestart={handleRestartGame}
-        onBackToHome={() => router.push('/')}
+        selectedDrink={selectedDrink}
       />
+    )
+  }
+
+  if (gameMode === 'selection') {
+    return (
+      <div className="max-w-6xl mx-auto space-y-8">
+        <DrinkSelector
+          onDrinkSelect={handleDrinkSelect}
+          onMixedMode={handleMixedMode}
+        />
+      </div>
     )
   }
 
@@ -179,7 +149,10 @@ export default function GamePage() {
           Barista Training Game
         </h1>
         <p className="text-lg text-gray-600">
-          Test your knowledge of Starbucks drinks, recipes, and techniques
+          {selectedDrink === 'mixed' 
+            ? 'Mixed Challenge Mode - All drinks and general knowledge'
+            : `Practicing: ${selectedDrink?.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}`
+          }
         </p>
       </div>
 

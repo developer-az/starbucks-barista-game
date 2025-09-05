@@ -1,11 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
   images: {
-    domains: ['ppl-ai-code-interpreter-files.s3.amazonaws.com', 'user-gen-media-assets.s3.amazonaws.com'],
+    remotePatterns: [
+      // Add your own image domains here when needed
+    ],
   },
+  // Suppress hydration warnings for browser extension conflicts
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
+  },
+  // Fix the outputFileTracingRoot warning
+  outputFileTracingRoot: __dirname,
 }
 
 module.exports = nextConfig

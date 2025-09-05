@@ -68,7 +68,7 @@ export default function HomePage() {
             {
               name: 'Iced Brown Sugar Oatmilk Shaken Espresso',
               description: 'Smooth blonde espresso shaken with brown sugar and cinnamon',
-              image: 'https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/2b3fdb07da54b6f846ee1a4096c6eaf2/4e6952b-4260-4043-86b7-b759c5445c1a/d14af857.png',
+              image: '/placeholder-drink.jpg',
               category: 'Espresso'
             },
             {
