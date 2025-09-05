@@ -3,109 +3,160 @@ import Image from 'next/image'
 
 export default function HomePage() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-16">
       {/* Hero Section */}
-      <section className="text-center space-y-6">
-        <div className="space-y-4">
-          <h1 className="text-5xl font-bold text-starbucks-darkgreen">
-            Master the Art of Coffee Making
+      <section className="hero-section">
+        <div className="hero-content">
+          <div className="hero-badge">
+            <span className="hero-badge-icon">⭐</span>
+            <span>Professional Barista Training</span>
+          </div>
+          <h1 className="hero-title">
+            Master the Art of 
+            <span className="hero-title-highlight"> Coffee Making</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="hero-description">
             Interactive training game for Starbucks baristas. Learn recipes, perfect techniques, 
-            and become a coffee expert through gamified learning experiences.
+            and become a coffee expert through gamified learning experiences designed by industry professionals.
           </p>
-        </div>
-        <div className="flex justify-center space-x-4">
-          <Link href="/game" className="btn-primary text-lg px-8 py-4">
-            Start Training Game
-          </Link>
-          <Link href="/recipes" className="btn-secondary text-lg px-8 py-4">
-            Browse Recipes
-          </Link>
+          <div className="hero-actions">
+            <Link href="/game" className="btn-primary btn-large">
+              <span>🎯</span>
+              Start Training Game
+            </Link>
+            <Link href="/recipes" className="btn-secondary btn-large">
+              <span>📚</span>
+              Browse Recipes
+            </Link>
+          </div>
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <div className="hero-stat-number">7+</div>
+              <div className="hero-stat-label">Signature Recipes</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat-number">50+</div>
+              <div className="hero-stat-label">Training Questions</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat-number">6</div>
+              <div className="hero-stat-label">Learning Modules</div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Features Grid */}
-      <section className="grid md:grid-cols-3 gap-8">
-        <div className="card text-center space-y-4">
-          <div className="w-16 h-16 bg-starbucks-green rounded-full flex items-center justify-center mx-auto">
-            <span className="text-white text-2xl">🎯</span>
-          </div>
-          <h3 className="text-xl font-semibold text-starbucks-darkgreen">Interactive Learning</h3>
-          <p className="text-gray-600">
-            Learn through hands-on practice with realistic drink-making scenarios and immediate feedback.
+      <section className="features-section">
+        <div className="section-header">
+          <h2 className="section-title">Why Choose Our Training Platform?</h2>
+          <p className="section-description">
+            Comprehensive learning designed to make you a coffee expert
           </p>
         </div>
-
-        <div className="card text-center space-y-4">
-          <div className="w-16 h-16 bg-starbucks-green rounded-full flex items-center justify-center mx-auto">
-            <span className="text-white text-2xl">📚</span>
+        <div className="features-grid">
+          <div className="feature-card">
+            <div className="feature-icon">
+              <span>🎯</span>
+            </div>
+            <h3 className="feature-title">Interactive Learning</h3>
+            <p className="feature-description">
+              Learn through hands-on practice with realistic drink-making scenarios and immediate feedback to accelerate your mastery.
+            </p>
+            <div className="feature-benefits">
+              <div className="feature-benefit">✓ Real-time feedback</div>
+              <div className="feature-benefit">✓ Scenario-based learning</div>
+            </div>
           </div>
-          <h3 className="text-xl font-semibold text-starbucks-darkgreen">Comprehensive Recipes</h3>
-          <p className="text-gray-600">
-            Master the most popular Starbucks drinks with step-by-step instructions and ingredient details.
-          </p>
-        </div>
 
-        <div className="card text-center space-y-4">
-          <div className="w-16 h-16 bg-starbucks-green rounded-full flex items-center justify-center mx-auto">
-            <span className="text-white text-2xl">🏆</span>
+          <div className="feature-card">
+            <div className="feature-icon">
+              <span>📚</span>
+            </div>
+            <h3 className="feature-title">Comprehensive Recipes</h3>
+            <p className="feature-description">
+              Master the most popular Starbucks drinks with step-by-step instructions, ingredient details, and professional techniques.
+            </p>
+            <div className="feature-benefits">
+              <div className="feature-benefit">✓ Step-by-step guides</div>
+              <div className="feature-benefit">✓ Professional techniques</div>
+            </div>
           </div>
-          <h3 className="text-xl font-semibold text-starbucks-darkgreen">Progress Tracking</h3>
-          <p className="text-gray-600">
-            Monitor your improvement with detailed scoring and performance analytics.
-          </p>
+
+          <div className="feature-card">
+            <div className="feature-icon">
+              <span>🏆</span>
+            </div>
+            <h3 className="feature-title">Progress Tracking</h3>
+            <p className="feature-description">
+              Monitor your improvement with detailed scoring, performance analytics, and achievement badges to stay motivated.
+            </p>
+            <div className="feature-benefits">
+              <div className="feature-benefit">✓ Detailed analytics</div>
+              <div className="feature-benefit">✓ Achievement system</div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Popular Drinks Preview */}
-      <section className="space-y-6">
-        <h2 className="text-3xl font-bold text-starbucks-darkgreen text-center">
-          Popular Drinks You'll Master
-        </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="drinks-section">
+        <div className="section-header">
+          <h2 className="section-title">Popular Drinks You'll Master</h2>
+          <p className="section-description">
+            Learn to craft the most beloved Starbucks beverages with precision and confidence
+          </p>
+        </div>
+        <div className="drinks-grid">
           {[
             {
               name: 'Iced Brown Sugar Oatmilk Shaken Espresso',
               description: 'Smooth blonde espresso shaken with brown sugar and cinnamon',
-              image: '/placeholder-drink.jpg',
-              category: 'Espresso'
+              icon: '🥤',
+              category: 'Espresso',
+              difficulty: 'Intermediate',
+              time: '75s'
             },
             {
               name: 'Caramel Macchiato',
               description: 'Freshly steamed milk with vanilla syrup marked with espresso',
-              image: '/placeholder-macchiato.jpg',
-              category: 'Espresso'
+              icon: '☕',
+              category: 'Espresso',
+              difficulty: 'Intermediate',
+              time: '90s'
             },
             {
               name: 'Pumpkin Spice Latte',
               description: 'Signature espresso with pumpkin spice sauce and whipped cream',
-              image: '/placeholder-psl.jpg',
-              category: 'Seasonal'
+              icon: '🎃',
+              category: 'Seasonal',
+              difficulty: 'Beginner',
+              time: '90s'
             }
           ].map((drink, index) => (
-            <div key={index} className="game-card space-y-4">
-              <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-                {drink.image.startsWith('http') ? (
-                  <Image
-                    src={drink.image}
-                    alt={drink.name}
-                    width={300}
-                    height={200}
-                    className="rounded-lg object-cover w-full h-full"
-                  />
-                ) : (
-                  <span className="text-gray-500 text-4xl">☕</span>
-                )}
+            <div key={index} className="drink-card">
+              <div className="drink-card-header">
+                <div className="drink-icon">
+                  <span>{drink.icon}</span>
+                </div>
+                <div className="drink-badges">
+                  <span className="drink-category">{drink.category}</span>
+                  {drink.category === 'Seasonal' && <span className="seasonal-badge">🎃 Limited</span>}
+                </div>
               </div>
-              <div className="space-y-2">
-                <span className="inline-block px-3 py-1 bg-starbucks-gold text-white text-sm rounded-full">
-                  {drink.category}
-                </span>
-                <h3 className="font-semibold text-lg text-starbucks-darkgreen">
-                  {drink.name}
-                </h3>
-                <p className="text-gray-600 text-sm">{drink.description}</p>
+              <div className="drink-content">
+                <h3 className="drink-name">{drink.name}</h3>
+                <p className="drink-description">{drink.description}</p>
+                <div className="drink-meta">
+                  <div className="drink-meta-item">
+                    <span className="drink-meta-icon">⚡</span>
+                    <span>{drink.difficulty}</span>
+                  </div>
+                  <div className="drink-meta-item">
+                    <span className="drink-meta-icon">⏱️</span>
+                    <span>{drink.time}</span>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
@@ -113,14 +164,40 @@ export default function HomePage() {
       </section>
 
       {/* Call to Action */}
-      <section className="text-center space-y-6 bg-starbucks-green text-white rounded-2xl p-12">
-        <h2 className="text-3xl font-bold">Ready to Become a Barista Pro?</h2>
-        <p className="text-xl opacity-90">
-          Start your journey with our interactive training game and master the art of coffee making.
-        </p>
-        <Link href="/game" className="btn-secondary text-lg px-8 py-4 inline-block">
-          Begin Your Training
-        </Link>
+      <section className="cta-section">
+        <div className="cta-content">
+          <div className="cta-header">
+            <h2 className="cta-title">Ready to Become a Barista Pro?</h2>
+            <p className="cta-description">
+              Start your journey with our interactive training game and master the art of coffee making. 
+              Join thousands of baristas who have elevated their skills.
+            </p>
+          </div>
+          <div className="cta-actions">
+            <Link href="/game" className="btn-secondary btn-large">
+              <span>🚀</span>
+              Begin Your Training
+            </Link>
+            <Link href="/learning" className="btn-outline btn-large">
+              <span>📖</span>
+              Explore Learning Path
+            </Link>
+          </div>
+          <div className="cta-features">
+            <div className="cta-feature">
+              <span>🎓</span>
+              <span>Professional Certification</span>
+            </div>
+            <div className="cta-feature">
+              <span>⏰</span>
+              <span>Self-Paced Learning</span>
+            </div>
+            <div className="cta-feature">
+              <span>📱</span>
+              <span>Mobile Friendly</span>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   )
