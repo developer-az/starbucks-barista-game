@@ -31,11 +31,11 @@ export default function HomePage() {
           </div>
           <div className="hero-stats">
             <div className="hero-stat">
-              <div className="hero-stat-number">7+</div>
+              <div className="hero-stat-number">15+</div>
               <div className="hero-stat-label">Signature Recipes</div>
             </div>
             <div className="hero-stat">
-              <div className="hero-stat-number">50+</div>
+              <div className="hero-stat-number">100+</div>
               <div className="hero-stat-label">Training Questions</div>
             </div>
             <div className="hero-stat">
