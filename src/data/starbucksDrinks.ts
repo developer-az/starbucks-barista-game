@@ -2236,7 +2236,7 @@ export const STARBUCKS_DRINKS: StarbucksDrink[] = [
       'This is a coffee-free Frappuccino - perfect for non-coffee drinkers',
       'Vanilla bean powder contains real vanilla bean specks for authentic flavor',
       'Popular with children and those avoiding caffeine',
-      'Can add espresso shots to create a Vanilla Bean Latte Frappuccino'
+      'Can add espresso shots to create a Vanilla Bean Latte Frappuccino.'
     ],
     difficulty: 'beginner',
     estimatedTime: 70,
