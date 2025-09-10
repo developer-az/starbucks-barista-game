@@ -14,7 +14,7 @@ export interface StarbucksDrink {
   difficulty: 'beginner' | 'intermediate' | 'advanced'
   estimatedTime: number // in seconds
   temperature: 'hot' | 'cold' | 'blended'
-  caffeineLevel: 'low' | 'medium' | 'high'
+  caffeineLevel: 'none' | 'low' | 'medium' | 'high'
 }
 
 export interface DrinkIngredient {
