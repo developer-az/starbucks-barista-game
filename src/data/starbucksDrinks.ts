@@ -1570,7 +1570,7 @@ export const STARBUCKS_DRINKS: StarbucksDrink[] = [
       'The classic ratio is 1/3 espresso, 1/3 steamed milk, 1/3 foam',
       'Cappuccino originated in Italy and should have minimal sweetness',
       'Quality of espresso is most important - foam enhances but doesn\'t mask flavor',
-      'Properly steamed milk should have a glossy, paint-like appearance before foam separation'
+      'Properly steamed milk should have a glossy, paint-like appearance before foam separation.'
     ],
     difficulty: 'intermediate',
     estimatedTime: 75,
