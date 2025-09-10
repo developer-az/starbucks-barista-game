@@ -1483,6 +1483,787 @@ export const STARBUCKS_DRINKS: StarbucksDrink[] = [
     estimatedTime: 65,
     temperature: 'cold',
     caffeineLevel: 'medium'
+  },
+
+  // MORE ESPRESSO DRINKS
+  {
+    id: 'cappuccino',
+    name: 'Cappuccino',
+    category: 'espresso',
+    isSeasonal: false,
+    description: 'Rich espresso with steamed milk and a deep layer of foam',
+    emoji: '☕',
+    imageUrl: '/drinks/cappuccino.jpg',
+    ingredients: [
+      { name: 'Espresso Roast', amount: 2, unit: 'shots', type: 'base', isOptional: false },
+      { name: '2% Milk', amount: 0.5, unit: 'cup', type: 'milk', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'pull-espresso',
+        order: 1,
+        instruction: 'Extract 2 shots of espresso into cappuccino cup',
+        duration: 25,
+        temperature: 185,
+        technique: 'Use proper grind size and tamping pressure for optimal extraction',
+        visualCue: 'Golden crema should form on top of espresso shots',
+        commonMistakes: ['Over or under extraction', 'Wrong cup size']
+      },
+      {
+        id: 'steam-milk-cappuccino',
+        order: 2,
+        instruction: 'Steam milk to 140°F with thick, velvety microfoam',
+        duration: 35,
+        temperature: 140,
+        technique: 'Create more foam than a latte - aerate for 5-8 seconds for thick foam',
+        visualCue: 'Milk should have thick, glossy foam that holds its shape',
+        commonMistakes: ['Not enough foam', 'Overheating milk', 'Large bubbles instead of microfoam']
+      },
+      {
+        id: 'pour-cappuccino',
+        order: 3,
+        instruction: 'Pour steamed milk and foam to create 1/3 espresso, 1/3 milk, 1/3 foam ratio',
+        duration: 15,
+        technique: 'Pour milk first, then spoon foam on top to achieve proper ratio',
+        visualCue: 'Distinct layers with thick foam dome on top',
+        commonMistakes: ['Wrong ratio', 'Mixing layers', 'Insufficient foam layer']
+      }
+    ],
+    nutrition: {
+      calories: 120,
+      fat: 4,
+      carbs: 12,
+      protein: 8,
+      caffeine: 150,
+      sugar: 10
+    },
+    customization: {
+      sizes: ['Short', 'Tall', 'Grande'],
+      milkOptions: ['2% Milk', 'Nonfat Milk', 'Whole Milk', 'Oatmilk', 'Soy Milk'],
+      syrupOptions: ['Vanilla', 'Caramel', 'Hazelnut'],
+      extraShots: true,
+      decaf: true,
+      iced: false,
+      extraHot: true
+    },
+    tips: [
+      'Traditional cappuccino is equal parts espresso, steamed milk, and foam',
+      'Foam should be thick enough to support a spoon',
+      'Serve immediately while foam is at its peak',
+      'Italian tradition calls for no flavoring syrups'
+    ],
+    difficulty: 'intermediate',
+    estimatedTime: 80,
+    temperature: 'hot',
+    caffeineLevel: 'medium'
+  },
+
+  {
+    id: 'latte',
+    name: 'Caffè Latte',
+    category: 'espresso',
+    isSeasonal: false,
+    description: 'Rich espresso with steamed milk and light layer of foam',
+    emoji: '☕',
+    imageUrl: '/drinks/latte.jpg',
+    ingredients: [
+      { name: 'Espresso Roast', amount: 2, unit: 'shots', type: 'base', isOptional: false },
+      { name: '2% Milk', amount: 1, unit: 'cup', type: 'milk', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'prepare-latte-cup',
+        order: 1,
+        instruction: 'Use appropriate sized cup for latte',
+        duration: 3,
+        technique: 'Warm cup if possible for better temperature retention',
+        visualCue: 'Clean, appropriately sized cup'
+      },
+      {
+        id: 'extract-latte-espresso',
+        order: 2,
+        instruction: 'Pull espresso shots directly into cup',
+        duration: 25,
+        temperature: 185,
+        technique: 'Extract shots fresh to maintain crema',
+        visualCue: 'Rich golden crema on espresso surface'
+      },
+      {
+        id: 'steam-latte-milk',
+        order: 3,
+        instruction: 'Steam milk to 150°F creating smooth microfoam',
+        duration: 30,
+        temperature: 150,
+        technique: 'Aerate briefly then focus on heating, create wet microfoam',
+        visualCue: 'Glossy, paint-like texture with minimal visible foam'
+      },
+      {
+        id: 'pour-latte-art',
+        order: 4,
+        instruction: 'Pour milk in steady stream, finish with latte art if skilled',
+        duration: 20,
+        technique: 'Start from height, finish close to surface for art',
+        visualCue: 'Smooth integration with optional heart or rosetta pattern'
+      }
+    ],
+    nutrition: {
+      calories: 190,
+      fat: 7,
+      carbs: 18,
+      protein: 12,
+      caffeine: 150,
+      sugar: 17
+    },
+    customization: {
+      sizes: ['Short', 'Tall', 'Grande', 'Venti'],
+      milkOptions: ['2% Milk', 'Nonfat Milk', 'Whole Milk', 'Oatmilk', 'Soy Milk', 'Almond Milk', 'Coconut Milk'],
+      syrupOptions: ['Vanilla', 'Caramel', 'Hazelnut', 'Sugar-Free Vanilla'],
+      extraShots: true,
+      decaf: true,
+      iced: true,
+      extraHot: true
+    },
+    tips: [
+      'Latte has more milk than cappuccino, creating creamier texture',
+      'Perfect canvas for latte art due to smooth milk texture',
+      'Microfoam should integrate seamlessly with espresso',
+      'Most popular espresso drink worldwide'
+    ],
+    difficulty: 'beginner',
+    estimatedTime: 85,
+    temperature: 'hot',
+    caffeineLevel: 'medium'
+  },
+
+  {
+    id: 'mocha',
+    name: 'Caffè Mocha',
+    category: 'espresso',
+    isSeasonal: false,
+    description: 'Rich espresso with chocolate syrup, steamed milk, and whipped cream',
+    emoji: '🍫',
+    imageUrl: '/drinks/mocha.jpg',
+    ingredients: [
+      { name: 'Espresso Roast', amount: 2, unit: 'shots', type: 'base', isOptional: false },
+      { name: 'Chocolate Syrup', amount: 2, unit: 'pumps', type: 'syrup', isOptional: false },
+      { name: '2% Milk', amount: 1, unit: 'cup', type: 'milk', isOptional: false },
+      { name: 'Whipped Cream', amount: 1, unit: 'dollop', type: 'topping', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'add-chocolate-syrup',
+        order: 1,
+        instruction: 'Add chocolate syrup to bottom of cup',
+        duration: 5,
+        technique: 'Use appropriate pump count for size',
+        visualCue: 'Rich chocolate syrup coating bottom'
+      },
+      {
+        id: 'add-espresso-mocha',
+        order: 2,
+        instruction: 'Extract espresso shots onto chocolate syrup',
+        duration: 25,
+        temperature: 185,
+        technique: 'Hot espresso helps dissolve chocolate syrup',
+        visualCue: 'Espresso begins mixing with chocolate'
+      },
+      {
+        id: 'stir-mixture',
+        order: 3,
+        instruction: 'Stir espresso and chocolate syrup to combine',
+        duration: 5,
+        technique: 'Ensure complete dissolution of syrup',
+        visualCue: 'Uniform chocolate-coffee color'
+      },
+      {
+        id: 'steam-milk-mocha',
+        order: 4,
+        instruction: 'Steam milk to 150°F with light foam',
+        duration: 30,
+        temperature: 150,
+        technique: 'Create less foam than cappuccino, more than latte',
+        visualCue: 'Creamy milk with light foam layer'
+      },
+      {
+        id: 'combine-mocha',
+        order: 5,
+        instruction: 'Pour steamed milk into chocolate espresso mixture',
+        duration: 10,
+        technique: 'Pour steadily to maintain temperature',
+        visualCue: 'Rich brown color throughout'
+      },
+      {
+        id: 'top-whipped-cream',
+        order: 6,
+        instruction: 'Top with whipped cream',
+        duration: 8,
+        technique: 'Create attractive dome of whipped cream',
+        visualCue: 'White whipped cream dome contrasting with brown drink'
+      }
+    ],
+    nutrition: {
+      calories: 360,
+      fat: 14,
+      carbs: 44,
+      protein: 13,
+      caffeine: 95,
+      sugar: 35
+    },
+    customization: {
+      sizes: ['Short', 'Tall', 'Grande', 'Venti'],
+      milkOptions: ['2% Milk', 'Nonfat Milk', 'Soy Milk', 'Almond Milk', 'Oatmilk'],
+      syrupOptions: ['Chocolate', 'Dark Chocolate', 'Sugar-Free Chocolate'],
+      extraShots: true,
+      decaf: true,
+      iced: true,
+      extraHot: true
+    },
+    tips: [
+      'Perfect balance of coffee and chocolate flavors',
+      'Popular gateway drink for non-coffee drinkers',
+      'Can be made with dark chocolate for richer flavor',
+      'Whipped cream is essential for authentic experience'
+    ],
+    difficulty: 'beginner',
+    estimatedTime: 90,
+    temperature: 'hot',
+    caffeineLevel: 'medium'
+  },
+
+  // MORE FRAPPUCCINOS
+  {
+    id: 'vanilla-bean-frappuccino',
+    name: 'Vanilla Bean Frappuccino',
+    category: 'frappuccino',
+    isSeasonal: false,
+    description: 'Caffeine-free blended beverage with vanilla bean powder, milk, and ice',
+    emoji: '🥤',
+    imageUrl: '/drinks/vanilla-bean-frappuccino.jpg',
+    ingredients: [
+      { name: 'Vanilla Bean Powder', amount: 2, unit: 'scoops', type: 'base', isOptional: false },
+      { name: 'Crème Frappuccino Base', amount: 1, unit: 'pump', type: 'base', isOptional: false },
+      { name: '2% Milk', amount: 1, unit: 'cup', type: 'milk', isOptional: false },
+      { name: 'Ice', amount: 2, unit: 'cups', type: 'extra', isOptional: false },
+      { name: 'Whipped Cream', amount: 1, unit: 'dollop', type: 'topping', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'add-vanilla-powder',
+        order: 1,
+        instruction: 'Add vanilla bean powder to blender',
+        duration: 5,
+        technique: 'Use proper scoop size for consistent flavor',
+        visualCue: 'Fine vanilla powder with visible bean specks'
+      },
+      {
+        id: 'add-creme-base',
+        order: 2,
+        instruction: 'Add crème Frappuccino base',
+        duration: 5,
+        technique: 'Provides sweetness and texture without caffeine',
+        visualCue: 'Clear syrup base in blender'
+      },
+      {
+        id: 'add-cold-milk',
+        order: 3,
+        instruction: 'Add cold milk to first line',
+        duration: 5,
+        visualCue: 'Milk reaches appropriate measurement line'
+      },
+      {
+        id: 'add-ice-vanilla',
+        order: 4,
+        instruction: 'Fill with ice to top line',
+        duration: 5,
+        visualCue: 'Ice packed to top measurement'
+      },
+      {
+        id: 'blend-vanilla-bean',
+        order: 5,
+        instruction: 'Blend on Frappuccino setting until smooth',
+        duration: 45,
+        technique: 'Ensure vanilla powder is fully incorporated',
+        visualCue: 'Smooth, creamy texture with vanilla specks throughout'
+      },
+      {
+        id: 'serve-vanilla-bean',
+        order: 6,
+        instruction: 'Pour into cup and top with whipped cream',
+        duration: 10,
+        visualCue: 'Creamy white drink with whipped cream dome'
+      }
+    ],
+    nutrition: {
+      calories: 400,
+      fat: 16,
+      carbs: 59,
+      protein: 6,
+      caffeine: 0,
+      sugar: 57
+    },
+    customization: {
+      sizes: ['Tall', 'Grande', 'Venti'],
+      milkOptions: ['2% Milk', 'Nonfat Milk', 'Soy Milk', 'Almond Milk'],
+      syrupOptions: ['Vanilla Bean', 'Extra Vanilla Bean'],
+      extraShots: false,
+      decaf: false,
+      iced: false,
+      extraHot: false
+    },
+    tips: [
+      'Caffeine-free option perfect for any time of day',
+      'Real vanilla bean creates authentic flavor and visual appeal',
+      'Popular with children and non-coffee drinkers',
+      'Can add espresso shots to make it caffeinated'
+    ],
+    difficulty: 'beginner',
+    estimatedTime: 75,
+    temperature: 'blended',
+    caffeineLevel: 'low'
+  },
+
+  {
+    id: 'strawberry-frappuccino',
+    name: 'Strawberry Frappuccino',
+    category: 'frappuccino',
+    isSeasonal: false,
+    description: 'Refreshing strawberry puree blended with milk and ice',
+    emoji: '🍓',
+    imageUrl: '/drinks/strawberry-frappuccino.jpg',
+    ingredients: [
+      { name: 'Strawberry Puree', amount: 3, unit: 'pumps', type: 'base', isOptional: false },
+      { name: 'Crème Frappuccino Base', amount: 1, unit: 'pump', type: 'base', isOptional: false },
+      { name: '2% Milk', amount: 1, unit: 'cup', type: 'milk', isOptional: false },
+      { name: 'Ice', amount: 2, unit: 'cups', type: 'extra', isOptional: false },
+      { name: 'Whipped Cream', amount: 1, unit: 'dollop', type: 'topping', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'add-strawberry-puree',
+        order: 1,
+        instruction: 'Add strawberry puree to blender',
+        duration: 5,
+        technique: 'Use real strawberry puree for authentic flavor',
+        visualCue: 'Bright red strawberry puree in blender'
+      },
+      {
+        id: 'add-base-strawberry',
+        order: 2,
+        instruction: 'Add crème base for sweetness and texture',
+        duration: 5,
+        visualCue: 'Clear base mixed with red puree'
+      },
+      {
+        id: 'add-milk-strawberry',
+        order: 3,
+        instruction: 'Add cold milk to measurement line',
+        duration: 5,
+        visualCue: 'Pink mixture forming in blender'
+      },
+      {
+        id: 'ice-strawberry',
+        order: 4,
+        instruction: 'Add ice to top line',
+        duration: 5,
+        visualCue: 'Ice covering pink mixture'
+      },
+      {
+        id: 'blend-strawberry',
+        order: 5,
+        instruction: 'Blend until smooth and well combined',
+        duration: 45,
+        technique: 'Ensure even pink color throughout',
+        visualCue: 'Smooth pink frappuccino with no ice chunks'
+      },
+      {
+        id: 'finish-strawberry',
+        order: 6,
+        instruction: 'Pour and top with whipped cream',
+        duration: 10,
+        visualCue: 'Beautiful pink drink with white whipped cream'
+      }
+    ],
+    nutrition: {
+      calories: 370,
+      fat: 15,
+      carbs: 54,
+      protein: 5,
+      caffeine: 0,
+      sugar: 52
+    },
+    customization: {
+      sizes: ['Tall', 'Grande', 'Venti'],
+      milkOptions: ['2% Milk', 'Nonfat Milk', 'Coconut Milk', 'Almond Milk'],
+      syrupOptions: ['Strawberry Puree', 'Extra Strawberry'],
+      extraShots: false,
+      decaf: false,
+      iced: false,
+      extraHot: false
+    },
+    tips: [
+      'Uses real strawberry puree for natural flavor',
+      'Popular summer drink with fruity taste',
+      'Can blend with frozen strawberries for extra texture',
+      'Naturally caffeine-free'
+    ],
+    difficulty: 'beginner',
+    estimatedTime: 70,
+    temperature: 'blended',
+    caffeineLevel: 'low'
+  },
+
+  // MORE REFRESHERS
+  {
+    id: 'mango-dragonfruit-refresher',
+    name: 'Mango Dragonfruit Refresher',
+    category: 'refresher',
+    isSeasonal: false,
+    description: 'Tropical blend of juicy mango and dragonfruit flavors shaken with ice',
+    emoji: '🥭',
+    imageUrl: '/drinks/mango-dragonfruit-refresher.jpg',
+    ingredients: [
+      { name: 'Mango Dragonfruit Base', amount: 1, unit: 'cup', type: 'base', isOptional: false },
+      { name: 'Water', amount: 1, unit: 'cup', type: 'base', isOptional: false },
+      { name: 'Ice', amount: 1, unit: 'cup', type: 'extra', isOptional: false },
+      { name: 'Freeze-dried Dragonfruit', amount: 1, unit: 'scoop', type: 'topping', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'add-ice-mango',
+        order: 1,
+        instruction: 'Fill shaker with ice to appropriate line',
+        duration: 5,
+        visualCue: 'Ice filling shaker to size-specific line'
+      },
+      {
+        id: 'add-mango-base',
+        order: 2,
+        instruction: 'Add mango dragonfruit base concentrate',
+        duration: 5,
+        technique: 'Shake concentrate before use to ensure proper mixing',
+        visualCue: 'Bright orange-pink base in shaker'
+      },
+      {
+        id: 'add-water-mango',
+        order: 3,
+        instruction: 'Add water to dilute concentrate',
+        duration: 5,
+        visualCue: 'Color lightens as water is added'
+      },
+      {
+        id: 'shake-mango',
+        order: 4,
+        instruction: 'Shake vigorously for 10-15 seconds',
+        duration: 15,
+        technique: 'Strong back-and-forth motion to create froth',
+        visualCue: 'Mixture becomes frothy and well-blended'
+      },
+      {
+        id: 'pour-mango',
+        order: 5,
+        instruction: 'Strain into cup and garnish with freeze-dried dragonfruit',
+        duration: 8,
+        visualCue: 'Beautiful tropical colored drink with dragonfruit pieces'
+      }
+    ],
+    nutrition: {
+      calories: 90,
+      fat: 0,
+      carbs: 21,
+      protein: 0,
+      caffeine: 45,
+      sugar: 19
+    },
+    customization: {
+      sizes: ['Tall', 'Grande', 'Venti'],
+      milkOptions: ['Coconut Milk', 'Lemonade'],
+      syrupOptions: ['Mango Dragonfruit', 'Extra Base'],
+      extraShots: false,
+      decaf: false,
+      iced: true,
+      extraHot: false
+    },
+    tips: [
+      'Contains natural caffeine from green coffee extract',
+      'Freeze-dried dragonfruit adds texture and visual appeal',
+      'Popular tropical flavor combination',
+      'Can be made with coconut milk for Dragon Drink variation'
+    ],
+    difficulty: 'beginner',
+    estimatedTime: 40,
+    temperature: 'cold',
+    caffeineLevel: 'low'
+  },
+
+  {
+    id: 'dragon-drink',
+    name: 'Dragon Drink',
+    category: 'refresher',
+    isSeasonal: false,
+    description: 'Mango Dragonfruit Refresher shaken with creamy coconut milk',
+    emoji: '🐲',
+    imageUrl: '/drinks/dragon-drink.jpg',
+    ingredients: [
+      { name: 'Mango Dragonfruit Base', amount: 1, unit: 'cup', type: 'base', isOptional: false },
+      { name: 'Coconut Milk', amount: 0.5, unit: 'cup', type: 'milk', isOptional: false },
+      { name: 'Ice', amount: 1, unit: 'cup', type: 'extra', isOptional: false },
+      { name: 'Freeze-dried Dragonfruit', amount: 1, unit: 'scoop', type: 'topping', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'prepare-dragon-shaker',
+        order: 1,
+        instruction: 'Fill shaker with ice to proper measurement',
+        duration: 5,
+        visualCue: 'Ice to appropriate line for cup size'
+      },
+      {
+        id: 'add-dragon-base',
+        order: 2,
+        instruction: 'Add mango dragonfruit refresher base',
+        duration: 5,
+        technique: 'Ensure base is well-shaken before use',
+        visualCue: 'Vibrant tropical color base'
+      },
+      {
+        id: 'add-coconut-dragon',
+        order: 3,
+        instruction: 'Add coconut milk instead of water',
+        duration: 5,
+        technique: 'Shake coconut milk container first to mix',
+        visualCue: 'Creamy coconut milk creating marbled effect'
+      },
+      {
+        id: 'shake-dragon',
+        order: 4,
+        instruction: 'Shake vigorously to combine all ingredients',
+        duration: 15,
+        technique: 'Ensure coconut milk is fully incorporated',
+        visualCue: 'Creamy, tropical-colored mixture'
+      },
+      {
+        id: 'serve-dragon',
+        order: 5,
+        instruction: 'Pour and top with freeze-dried dragonfruit',
+        duration: 8,
+        visualCue: 'Creamy tropical drink with dragonfruit pieces floating'
+      }
+    ],
+    nutrition: {
+      calories: 130,
+      fat: 3,
+      carbs: 26,
+      protein: 1,
+      caffeine: 45,
+      sugar: 23
+    },
+    customization: {
+      sizes: ['Tall', 'Grande', 'Venti'],
+      milkOptions: ['Coconut Milk (standard)', 'Oatmilk', 'Almond Milk'],
+      syrupOptions: ['None (standard)', 'Vanilla'],
+      extraShots: false,
+      decaf: false,
+      iced: true,
+      extraHot: false
+    },
+    tips: [
+      'Dragon Drink is the coconut milk version of Mango Dragonfruit Refresher',
+      'Popular on social media for its beautiful color',
+      'Coconut milk adds creaminess and tropical flavor',
+      'Instagram-worthy presentation with dragonfruit garnish'
+    ],
+    difficulty: 'beginner',
+    estimatedTime: 40,
+    temperature: 'cold',
+    caffeineLevel: 'low'
+  },
+
+  // MORE TEA DRINKS
+  {
+    id: 'matcha-latte',
+    name: 'Iced Green Tea Latte',
+    category: 'tea',
+    isSeasonal: false,
+    description: 'Premium matcha green tea powder with steamed milk for earthy, sweet flavor',
+    emoji: '🍵',
+    imageUrl: '/drinks/matcha-latte.jpg',
+    ingredients: [
+      { name: 'Matcha Tea Powder', amount: 2, unit: 'scoops', type: 'base', isOptional: false },
+      { name: 'Classic Syrup', amount: 3, unit: 'pumps', type: 'syrup', isOptional: false },
+      { name: '2% Milk', amount: 1, unit: 'cup', type: 'milk', isOptional: false },
+      { name: 'Ice', amount: 1, unit: 'cup', type: 'extra', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'add-matcha-powder',
+        order: 1,
+        instruction: 'Add matcha powder to shaker',
+        duration: 5,
+        technique: 'Use proper scoops of high-quality matcha',
+        visualCue: 'Bright green matcha powder in shaker'
+      },
+      {
+        id: 'add-syrup-matcha',
+        order: 2,
+        instruction: 'Add classic syrup for sweetness',
+        duration: 5,
+        technique: 'Syrup helps dissolve matcha powder',
+        visualCue: 'Clear syrup over green powder'
+      },
+      {
+        id: 'add-small-milk-amount',
+        order: 3,
+        instruction: 'Add small amount of cold milk to dissolve matcha',
+        duration: 5,
+        technique: 'Start with small amount to create smooth paste',
+        visualCue: 'Green paste forming as matcha dissolves'
+      },
+      {
+        id: 'whisk-matcha',
+        order: 4,
+        instruction: 'Whisk vigorously to dissolve matcha completely',
+        duration: 20,
+        technique: 'Use traditional bamboo whisk or milk frother',
+        visualCue: 'Smooth green mixture with no powder lumps'
+      },
+      {
+        id: 'add-ice-milk',
+        order: 5,
+        instruction: 'Add ice and remaining cold milk',
+        duration: 10,
+        visualCue: 'Beautiful green drink over ice'
+      },
+      {
+        id: 'final-stir-matcha',
+        order: 6,
+        instruction: 'Stir gently to combine all ingredients',
+        duration: 5,
+        visualCue: 'Uniform green color throughout'
+      }
+    ],
+    nutrition: {
+      calories: 240,
+      fat: 7,
+      carbs: 37,
+      protein: 10,
+      caffeine: 80,
+      sugar: 32
+    },
+    customization: {
+      sizes: ['Short', 'Tall', 'Grande', 'Venti'],
+      milkOptions: ['2% Milk', 'Nonfat Milk', 'Oatmilk', 'Soy Milk', 'Almond Milk', 'Coconut Milk'],
+      syrupOptions: ['Classic', 'Vanilla', 'Sugar-Free Vanilla'],
+      extraShots: false,
+      decaf: false,
+      iced: true,
+      extraHot: true
+    },
+    tips: [
+      'High-quality matcha makes significant difference in flavor',
+      'Whisk thoroughly to prevent lumps',
+      'Natural caffeine from green tea leaves',
+      'Popular for its antioxidant benefits and unique flavor'
+    ],
+    difficulty: 'intermediate',
+    estimatedTime: 90,
+    temperature: 'cold',
+    caffeineLevel: 'medium'
+  },
+
+  // SEASONAL DRINKS
+  {
+    id: 'apple-crisp-oatmilk-macchiato',
+    name: 'Apple Crisp Oatmilk Macchiato',
+    category: 'espresso',
+    isSeasonal: true,
+    description: 'Espresso with apple and brown sugar flavors, topped with oatmilk and spiced apple drizzle',
+    emoji: '🍎',
+    imageUrl: '/drinks/apple-crisp-macchiato.jpg',
+    ingredients: [
+      { name: 'Espresso Roast', amount: 2, unit: 'shots', type: 'base', isOptional: false },
+      { name: 'Apple Brown Sugar Syrup', amount: 3, unit: 'pumps', type: 'syrup', isOptional: false },
+      { name: 'Oatmilk', amount: 1, unit: 'cup', type: 'milk', isOptional: false },
+      { name: 'Spiced Apple Drizzle', amount: 1, unit: 'drizzle', type: 'topping', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'add-apple-syrup',
+        order: 1,
+        instruction: 'Add apple brown sugar syrup to cup',
+        duration: 5,
+        technique: 'Use fall seasonal syrup for authentic flavor',
+        visualCue: 'Amber-colored apple syrup in cup bottom'
+      },
+      {
+        id: 'steam-oatmilk-apple',
+        order: 2,
+        instruction: 'Steam oatmilk to 150°F with light microfoam',
+        duration: 35,
+        temperature: 150,
+        technique: 'Oatmilk creates naturally sweet, creamy texture',
+        visualCue: 'Creamy oatmilk with subtle foam'
+      },
+      {
+        id: 'pour-oatmilk',
+        order: 3,
+        instruction: 'Pour steamed oatmilk into apple syrup',
+        duration: 15,
+        technique: 'Reserve small amount of foam for top layer',
+        visualCue: 'Creamy caramel-colored mixture'
+      },
+      {
+        id: 'pull-espresso-apple',
+        order: 4,
+        instruction: 'Extract espresso shots',
+        duration: 25,
+        temperature: 185,
+        technique: 'Pull shots fresh for optimal flavor',
+        visualCue: 'Rich golden crema on espresso'
+      },
+      {
+        id: 'mark-apple-macchiato',
+        order: 5,
+        instruction: 'Create macchiato mark by pouring espresso through center',
+        duration: 10,
+        technique: 'Pour from height to create distinct mark',
+        visualCue: 'Dark espresso mark in center of light drink'
+      },
+      {
+        id: 'apple-drizzle',
+        order: 6,
+        instruction: 'Top with spiced apple drizzle in crosshatch pattern',
+        duration: 8,
+        technique: 'Create decorative pattern with seasonal drizzle',
+        visualCue: 'Spiced apple drizzle creating autumn-themed pattern'
+      }
+    ],
+    nutrition: {
+      calories: 300,
+      fat: 7,
+      carbs: 56,
+      protein: 8,
+      caffeine: 150,
+      sugar: 45
+    },
+    customization: {
+      sizes: ['Short', 'Tall', 'Grande', 'Venti'],
+      milkOptions: ['Oatmilk (signature)', '2% Milk', 'Almond Milk', 'Soy Milk'],
+      syrupOptions: ['Apple Brown Sugar', 'Extra Apple Brown Sugar'],
+      extraShots: true,
+      decaf: true,
+      iced: true,
+      extraHot: true
+    },
+    tips: [
+      'Available during fall season (August-November)',
+      'Oatmilk complements apple flavors perfectly',
+      'Spiced apple drizzle contains cinnamon and nutmeg',
+      'Popular autumn comfort drink with warming spices'
+    ],
+    difficulty: 'intermediate',
+    estimatedTime: 100,
+    temperature: 'hot',
+    caffeineLevel: 'medium'
   }
 ]
 
