@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen" suppressHydrationWarning={true}>
         <MobileNavigation />
-        <main className="container py-8">
+        <main className="container py-8" style={{ paddingTop: '6rem' }}>
           {children}
         </main>
         <PWAInstaller />
