@@ -1483,8 +1483,835 @@ export const STARBUCKS_DRINKS: StarbucksDrink[] = [
     estimatedTime: 65,
     temperature: 'cold',
     caffeineLevel: 'medium'
-  }
-]
+  },
+
+  // NEW POPULAR DRINKS
+  
+  {
+    id: 'cappuccino',
+    name: 'Cappuccino',
+    category: 'espresso',
+    isSeasonal: false,
+    description: 'Rich espresso shots combined with steamed milk and topped with a thick layer of milk foam',
+    emoji: '☕',
+    imageUrl: '/drinks/cappuccino.jpg',
+    ingredients: [
+      { name: 'Espresso Roast', amount: 2, unit: 'shots', type: 'base', isOptional: false },
+      { name: '2% Milk', amount: 0.75, unit: 'cup', type: 'milk', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'prepare-cup',
+        order: 1,
+        instruction: 'Warm a 6oz cappuccino cup and place on espresso machine drip tray',
+        duration: 5,
+        technique: 'Cup should be warmed to enhance coffee temperature retention',
+        visualCue: 'Warm cup prevents temperature shock to espresso'
+      },
+      {
+        id: 'pull-espresso-shots',
+        order: 2,
+        instruction: 'Extract 2 shots of espresso directly into the warmed cup',
+        duration: 25,
+        temperature: 185,
+        technique: 'Use 18-19g dose, 30-second extraction for optimal flavor',
+        visualCue: 'Golden crema should form on top with honey-like flow',
+        commonMistakes: ['Under-extraction', 'Over-tamping', 'Wrong grind size']
+      },
+      {
+        id: 'steam-milk-cappuccino',
+        order: 3,
+        instruction: 'Steam milk to 150°F creating dense, velvety microfoam',
+        duration: 30,
+        temperature: 150,
+        technique: 'Aerate aggressively for first 5 seconds, then heat without adding more air',
+        visualCue: 'Milk should have thick, creamy texture - not wet like latte milk',
+        commonMistakes: ['Over-heating milk', 'Creating large bubbles', 'Under-aerating']
+      },
+      {
+        id: 'pour-cappuccino',
+        order: 4,
+        instruction: 'Pour steamed milk in center, finishing with thick foam on top',
+        duration: 10,
+        technique: 'Pour slowly to maintain foam separation, end with spooning foam',
+        visualCue: 'Should have distinct layers: espresso, thin milk, thick foam cap',
+        commonMistakes: ['Pouring too fast', 'Mixing foam too much', 'Wrong milk-to-foam ratio']
+      },
+      {
+        id: 'final-presentation',
+        order: 5,
+        instruction: 'Ensure 1/3 espresso, 1/3 steamed milk, 1/3 foam ratio',
+        duration: 5,
+        technique: 'Traditional cappuccino maintains classic proportions',
+        visualCue: 'Foam should dome above cup rim, golden crema visible at edges'
+      }
+    ],
+    nutrition: {
+      calories: 120,
+      fat: 4,
+      carbs: 12,
+      protein: 8,
+      caffeine: 150,
+      sugar: 12
+    },
+    customization: {
+      sizes: ['Short', 'Tall'],
+      milkOptions: ['2% Milk', 'Whole Milk', 'Nonfat Milk', 'Oatmilk'],
+      syrupOptions: ['None (traditional)', 'Vanilla', 'Cinnamon'],
+      extraShots: true,
+      decaf: true,
+      iced: false,
+      extraHot: false
+    },
+    tips: [
+      'Traditional cappuccino is served in 5-6oz cups to maintain proper ratios',
+      'Foam should be dense enough to support a sugar cube for a few seconds',
+      'Milk temperature is crucial - 150°F creates the perfect foam texture',
+      'The classic ratio is 1/3 espresso, 1/3 steamed milk, 1/3 foam',
+      'Cappuccino originated in Italy and should have minimal sweetness',
+      'Quality of espresso is most important - foam enhances but doesn\'t mask flavor',
+      'Properly steamed milk should have a glossy, paint-like appearance before foam separation'
+    ],
+    difficulty: 'intermediate',
+    estimatedTime: 75,
+    temperature: 'hot',
+    caffeineLevel: 'high'
+  },
+
+  {
+    id: 'latte',
+    name: 'Caffè Latte',
+    category: 'espresso',
+    isSeasonal: false,
+    description: 'Rich espresso shots combined with steamed milk and topped with light milk foam',
+    emoji: '🥛',
+    imageUrl: '/drinks/latte.jpg',
+    ingredients: [
+      { name: 'Espresso Roast', amount: 2, unit: 'shots', type: 'base', isOptional: false },
+      { name: '2% Milk', amount: 1.25, unit: 'cups', type: 'milk', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'prepare-latte-cup',
+        order: 1,
+        instruction: 'Select appropriate size cup: Tall (12oz), Grande (16oz), Venti (20oz)',
+        duration: 3,
+        technique: 'Larger cups accommodate more milk than cappuccino',
+        visualCue: 'Clean cup placed on espresso machine or counter'
+      },
+      {
+        id: 'extract-latte-shots',
+        order: 2,
+        instruction: 'Pull espresso shots: Tall (1), Grande (2), Venti (2) shots',
+        duration: 25,
+        temperature: 185,
+        technique: 'Standard espresso extraction - 25-30 seconds for balanced flavor',
+        visualCue: 'Rich golden crema on espresso shots',
+        commonMistakes: ['Wrong shot count for size', 'Letting shots sit too long']
+      },
+      {
+        id: 'steam-latte-milk',
+        order: 3,
+        instruction: 'Steam milk to 150°F with minimal foam - mostly liquid milk',
+        duration: 35,
+        temperature: 150,
+        technique: 'Brief aeration (2-3 seconds), then focus on heating',
+        visualCue: 'Milk should be glossy and wet-looking with minimal foam',
+        commonMistakes: ['Over-aerating', 'Creating too much foam', 'Overheating']
+      },
+      {
+        id: 'pour-latte',
+        order: 4,
+        instruction: 'Pour steamed milk from center outward, creating latte art if skilled',
+        duration: 15,
+        technique: 'Start with thin stream, finish closer to surface for art',
+        visualCue: 'Smooth brown color throughout with optional latte art on surface',
+        commonMistakes: ['Pouring too high', 'Not creating proper milk texture']
+      },
+      {
+        id: 'finish-latte',
+        order: 5,
+        instruction: 'Top with thin layer of foam, ensuring proper temperature',
+        duration: 5,
+        technique: 'Latte should be mostly milk with coffee flavor enhanced, not masked',
+        visualCue: 'Smooth surface with minimal foam layer'
+      }
+    ],
+    nutrition: {
+      calories: 190,
+      fat: 7,
+      carbs: 19,
+      protein: 13,
+      caffeine: 150,
+      sugar: 18
+    },
+    customization: {
+      sizes: ['Short', 'Tall', 'Grande', 'Venti'],
+      milkOptions: ['2% Milk', 'Nonfat Milk', 'Whole Milk', 'Soy Milk', 'Almond Milk', 'Oatmilk'],
+      syrupOptions: ['Vanilla', 'Caramel', 'Hazelnut', 'Cinnamon'],
+      extraShots: true,
+      decaf: true,
+      iced: true,
+      extraHot: true
+    },
+    tips: [
+      'Latte means "milk" in Italian - milk is the star ingredient',
+      'Proper ratio is about 1/6 espresso to 5/6 steamed milk',
+      'Latte art requires properly steamed milk - practice the technique',
+      'Different milk types create different foam qualities and flavors',
+      'Iced lattes use cold milk and are built differently than hot versions',
+      'Temperature consistency is key - milk should never exceed 160°F',
+      'Latte originated in America, not Italy, where it\'s called "caffè latte"'
+    ],
+    difficulty: 'beginner',
+    estimatedTime: 80,
+    temperature: 'hot',
+    caffeineLevel: 'medium'
+  },
+
+  {
+    id: 'mocha',
+    name: 'Caffè Mocha',
+    category: 'espresso',
+    isSeasonal: false,
+    description: 'Rich espresso combined with chocolate syrup and steamed milk, topped with whipped cream',
+    emoji: '🍫',
+    imageUrl: '/drinks/mocha.jpg',
+    ingredients: [
+      { name: 'Espresso Roast', amount: 2, unit: 'shots', type: 'base', isOptional: false },
+      { name: 'Mocha Sauce', amount: 3, unit: 'pumps', type: 'syrup', isOptional: false },
+      { name: '2% Milk', amount: 1, unit: 'cup', type: 'milk', isOptional: false },
+      { name: 'Whipped Cream', amount: 1, unit: 'dollop', type: 'topping', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'add-mocha-sauce',
+        order: 1,
+        instruction: 'Add mocha sauce to cup: Tall (2), Grande (3), Venti (4) pumps',
+        duration: 5,
+        technique: 'Sauce should be at proper temperature for easy mixing',
+        visualCue: 'Rich chocolate sauce coating bottom of cup',
+        commonMistakes: ['Cold sauce that won\'t mix', 'Wrong pump count']
+      },
+      {
+        id: 'pull-mocha-shots',
+        order: 2,
+        instruction: 'Extract espresso shots directly onto chocolate sauce',
+        duration: 25,
+        temperature: 185,
+        technique: 'Hot espresso helps dissolve chocolate sauce',
+        visualCue: 'Espresso should begin mixing with chocolate immediately',
+        commonMistakes: ['Not extracting onto sauce', 'Letting espresso cool first']
+      },
+      {
+        id: 'stir-mixture',
+        order: 3,
+        instruction: 'Stir espresso and chocolate sauce until completely combined',
+        duration: 10,
+        technique: 'Ensure no chocolate sauce remains at bottom',
+        visualCue: 'Uniform dark brown mixture with no streaks',
+        commonMistakes: ['Incomplete mixing', 'Not stirring thoroughly']
+      },
+      {
+        id: 'steam-mocha-milk',
+        order: 4,
+        instruction: 'Steam milk to 150°F with light foam suitable for chocolate drinks',
+        duration: 30,
+        temperature: 150,
+        technique: 'Slightly more foam than latte to complement rich chocolate',
+        visualCue: 'Creamy milk with small amount of foam'
+      },
+      {
+        id: 'combine-mocha',
+        order: 5,
+        instruction: 'Pour steamed milk into chocolate-espresso mixture, stirring gently',
+        duration: 10,
+        technique: 'Integrate milk slowly to maintain temperature and texture',
+        visualCue: 'Rich brown color throughout with no separation'
+      },
+      {
+        id: 'top-whipped-cream',
+        order: 6,
+        instruction: 'Top with generous dollop of whipped cream',
+        duration: 8,
+        technique: 'Whipped cream should form attractive dome above rim',
+        visualCue: 'White whipped cream contrasting with dark mocha below',
+        commonMistakes: ['Too little whipped cream', 'Uneven application']
+      }
+    ],
+    nutrition: {
+      calories: 360,
+      fat: 14,
+      carbs: 44,
+      protein: 14,
+      caffeine: 150,
+      sugar: 35
+    },
+    customization: {
+      sizes: ['Short', 'Tall', 'Grande', 'Venti'],
+      milkOptions: ['2% Milk', 'Nonfat Milk', 'Soy Milk', 'Almond Milk', 'Oatmilk'],
+      syrupOptions: ['Mocha Sauce', 'White Chocolate Mocha', 'Sugar-Free Mocha'],
+      extraShots: true,
+      decaf: true,
+      iced: true,
+      extraHot: true
+    },
+    tips: [
+      'Mocha sauce is thicker than syrup - ensure it\'s warm for proper mixing',
+      'Always stir chocolate and espresso before adding milk',
+      'Whipped cream is essential - balances rich chocolate flavor',
+      'Popular variations: white mocha, peppermint mocha, salted caramel mocha',
+      'Can be made "skinny" with nonfat milk and sugar-free chocolate',
+      'Iced mochas require extra stirring to fully dissolve chocolate',
+      'Quality chocolate sauce makes significant difference in final taste'
+    ],
+    difficulty: 'beginner',
+    estimatedTime: 95,
+    temperature: 'hot',
+    caffeineLevel: 'medium'
+  },
+
+  {
+    id: 'peppermint-mocha',
+    name: 'Peppermint Mocha',
+    category: 'espresso',
+    isSeasonal: true,
+    description: 'Holiday favorite combining rich mocha with refreshing peppermint and whipped cream',
+    emoji: '🎄',
+    imageUrl: '/drinks/peppermint-mocha.jpg',
+    ingredients: [
+      { name: 'Espresso Roast', amount: 2, unit: 'shots', type: 'base', isOptional: false },
+      { name: 'Mocha Sauce', amount: 3, unit: 'pumps', type: 'syrup', isOptional: false },
+      { name: 'Peppermint Syrup', amount: 2, unit: 'pumps', type: 'syrup', isOptional: false },
+      { name: '2% Milk', amount: 1, unit: 'cup', type: 'milk', isOptional: false },
+      { name: 'Whipped Cream', amount: 1, unit: 'dollop', type: 'topping', isOptional: false },
+      { name: 'Dark Chocolate Curls', amount: 1, unit: 'sprinkle', type: 'topping', isOptional: true }
+    ],
+    steps: [
+      {
+        id: 'add-sauces',
+        order: 1,
+        instruction: 'Add mocha sauce and peppermint syrup to cup in proper ratios',
+        duration: 8,
+        technique: 'Combine both flavors before adding espresso for even distribution',
+        visualCue: 'Dark chocolate with hint of peppermint aroma',
+        commonMistakes: ['Wrong syrup ratios', 'Not mixing sauces first']
+      },
+      {
+        id: 'extract-espresso',
+        order: 2,
+        instruction: 'Pull espresso shots directly onto sauce mixture',
+        duration: 25,
+        temperature: 185,
+        technique: 'Hot espresso dissolves both chocolate and peppermint',
+        visualCue: 'Espresso crema mixing with chocolate-peppermint base'
+      },
+      {
+        id: 'stir-thoroughly',
+        order: 3,
+        instruction: 'Stir until all sauces are completely dissolved and integrated',
+        duration: 12,
+        technique: 'Thorough mixing prevents flavor separation',
+        visualCue: 'Uniform dark mixture with peppermint aroma'
+      },
+      {
+        id: 'steam-milk',
+        order: 4,
+        instruction: 'Steam milk to 150°F creating smooth, creamy texture',
+        duration: 30,
+        temperature: 150,
+        technique: 'Light foam complements rich holiday flavors',
+        visualCue: 'Velvety steamed milk ready for pouring'
+      },
+      {
+        id: 'combine-drink',
+        order: 5,
+        instruction: 'Pour steamed milk slowly, ensuring complete integration',
+        duration: 12,
+        technique: 'Slow pour maintains temperature and blends flavors',
+        visualCue: 'Rich brown color with chocolate-peppermint aroma'
+      },
+      {
+        id: 'top-and-garnish',
+        order: 6,
+        instruction: 'Top with whipped cream and optional chocolate curls',
+        duration: 10,
+        technique: 'Generous whipped cream balances intense flavors',
+        visualCue: 'White cream topped with dark chocolate garnish',
+        commonMistakes: ['Skipping garnish', 'Too little whipped cream']
+      }
+    ],
+    nutrition: {
+      calories: 440,
+      fat: 16,
+      carbs: 63,
+      protein: 15,
+      caffeine: 150,
+      sugar: 54
+    },
+    customization: {
+      sizes: ['Short', 'Tall', 'Grande', 'Venti'],
+      milkOptions: ['2% Milk', 'Nonfat Milk', 'Soy Milk', 'Almond Milk', 'Oatmilk'],
+      syrupOptions: ['Extra Peppermint', 'Sugar-Free Peppermint', 'White Chocolate instead'],
+      extraShots: true,
+      decaf: true,
+      iced: true,
+      extraHot: false
+    },
+    tips: [
+      'Available seasonally from November through January',
+      'Peppermint intensity can be adjusted by varying syrup pumps',
+      'Dark chocolate curls add visual appeal and texture contrast',
+      'Popular variation: substitute white chocolate mocha sauce',
+      'Can be made "skinny" with sugar-free syrups and nonfat milk',
+      'Iced version requires extra stirring due to multiple sauces',
+      'Balance is key - neither chocolate nor peppermint should dominate'
+    ],
+    difficulty: 'intermediate',
+    estimatedTime: 105,
+    temperature: 'hot',
+    caffeineLevel: 'medium'
+  },
+
+  {
+    id: 'cinnamon-dolce-latte',
+    name: 'Cinnamon Dolce Latte',
+    category: 'espresso',
+    isSeasonal: false,
+    description: 'Smooth espresso and steamed milk with sweet cinnamon dolce syrup and cinnamon sugar topping',
+    emoji: '🍯',
+    imageUrl: '/drinks/cinnamon-dolce-latte.jpg',
+    ingredients: [
+      { name: 'Espresso Roast', amount: 2, unit: 'shots', type: 'base', isOptional: false },
+      { name: 'Cinnamon Dolce Syrup', amount: 4, unit: 'pumps', type: 'syrup', isOptional: false },
+      { name: '2% Milk', amount: 1, unit: 'cup', type: 'milk', isOptional: false },
+      { name: 'Whipped Cream', amount: 1, unit: 'dollop', type: 'topping', isOptional: false },
+      { name: 'Cinnamon Dolce Topping', amount: 1, unit: 'sprinkle', type: 'topping', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'add-cinnamon-syrup',
+        order: 1,
+        instruction: 'Add cinnamon dolce syrup: Tall (3), Grande (4), Venti (5) pumps',
+        duration: 5,
+        technique: 'Sweet cinnamon syrup provides base flavor profile',
+        visualCue: 'Golden amber syrup with warm cinnamon aroma',
+        commonMistakes: ['Using regular cinnamon instead of dolce', 'Wrong pump count']
+      },
+      {
+        id: 'pull-shots',
+        order: 2,
+        instruction: 'Extract espresso shots directly onto cinnamon syrup',
+        duration: 25,
+        temperature: 185,
+        technique: 'Hot espresso dissolves syrup and creates flavor base',
+        visualCue: 'Espresso blending with golden cinnamon syrup'
+      },
+      {
+        id: 'stir-base',
+        order: 3,
+        instruction: 'Stir espresso and syrup until completely combined',
+        duration: 8,
+        technique: 'Ensure even distribution of sweet cinnamon flavor',
+        visualCue: 'Uniform brown mixture with cinnamon aroma'
+      },
+      {
+        id: 'steam-milk',
+        order: 4,
+        instruction: 'Steam milk to 150°F with smooth, creamy texture',
+        duration: 30,
+        temperature: 150,
+        technique: 'Create latte-style milk with minimal foam',
+        visualCue: 'Glossy, velvety steamed milk'
+      },
+      {
+        id: 'combine-drink',
+        order: 5,
+        instruction: 'Pour steamed milk into cinnamon-espresso base',
+        duration: 12,
+        technique: 'Steady pour creates smooth integration',
+        visualCue: 'Rich brown latte with sweet cinnamon aroma'
+      },
+      {
+        id: 'top-and-finish',
+        order: 6,
+        instruction: 'Add whipped cream and sprinkle with cinnamon dolce topping',
+        duration: 10,
+        technique: 'Generous whipped cream balances sweet cinnamon',
+        visualCue: 'White cream topped with sparkling cinnamon sugar',
+        commonMistakes: ['Forgetting cinnamon topping', 'Uneven whipped cream']
+      }
+    ],
+    nutrition: {
+      calories: 340,
+      fat: 12,
+      carbs: 50,
+      protein: 12,
+      caffeine: 150,
+      sugar: 40
+    },
+    customization: {
+      sizes: ['Short', 'Tall', 'Grande', 'Venti'],
+      milkOptions: ['2% Milk', 'Nonfat Milk', 'Soy Milk', 'Almond Milk', 'Oatmilk'],
+      syrupOptions: ['Extra Cinnamon Dolce', 'Sugar-Free Cinnamon Dolce', 'Add Vanilla'],
+      extraShots: true,
+      decaf: true,
+      iced: true,
+      extraHot: true
+    },
+    tips: [
+      'Cinnamon dolce syrup is sweeter than regular cinnamon syrup',
+      'Cinnamon dolce topping contains sugar crystals for texture',
+      'Popular modification: extra cinnamon dolce syrup for more sweetness',
+      'Can be made "skinny" with sugar-free syrup and nonfat milk',
+      'Iced version maintains the same flavor profile when served cold',
+      'Whipped cream is essential for authentic taste and presentation',
+      'Pairs well with pastries and breakfast items'
+    ],
+    difficulty: 'beginner',
+    estimatedTime: 95,
+    temperature: 'hot',
+    caffeineLevel: 'medium'
+  },
+
+  {
+    id: 'mango-dragonfruit-refresher',
+    name: 'Mango Dragonfruit Refresher',
+    category: 'refresher',
+    isSeasonal: false,
+    description: 'Vibrant tropical blend of mango and dragonfruit flavors, hand-shaken with ice',
+    emoji: '🥭',
+    imageUrl: '/drinks/mango-dragonfruit-refresher.jpg',
+    ingredients: [
+      { name: 'Mango Dragonfruit Base', amount: 1, unit: 'cup', type: 'base', isOptional: false },
+      { name: 'Water', amount: 1, unit: 'cup', type: 'base', isOptional: false },
+      { name: 'Ice', amount: 1, unit: 'cup', type: 'extra', isOptional: false },
+      { name: 'Freeze-dried Dragonfruit Pieces', amount: 1, unit: 'scoop', type: 'topping', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'prepare-ice',
+        order: 1,
+        instruction: 'Fill shaker with ice to appropriate size line',
+        duration: 5,
+        technique: 'Use proper ice scoop and fill to designated measurement',
+        visualCue: 'Ice should reach size-specific line in shaker'
+      },
+      {
+        id: 'add-base',
+        order: 2,
+        instruction: 'Add mango dragonfruit base to proper measurement line',
+        duration: 5,
+        technique: 'Shake base concentrate before measuring to ensure consistency',
+        visualCue: 'Vibrant orange-pink liquid with tropical aroma',
+        commonMistakes: ['Not shaking base first', 'Wrong measurement for size']
+      },
+      {
+        id: 'add-water',
+        order: 3,
+        instruction: 'Add water to dilute base to proper concentration',
+        duration: 5,
+        technique: 'Use filtered water for best taste, fill to water line',
+        visualCue: 'Base should lighten slightly with water addition'
+      },
+      {
+        id: 'shake-vigorously',
+        order: 4,
+        instruction: 'Secure lid and shake with strong back-and-forth motion for 10 shakes',
+        duration: 15,
+        technique: 'Vigorous shaking creates proper texture and mixing',
+        visualCue: 'Should become frothy and well-blended',
+        commonMistakes: ['Not shaking vigorously enough', 'Loose lid']
+      },
+      {
+        id: 'pour-and-garnish',
+        order: 5,
+        instruction: 'Pour entire contents into cup and top with dragonfruit pieces',
+        duration: 8,
+        technique: 'Empty entire shaker including foam and fruit pieces',
+        visualCue: 'Vibrant orange drink with purple dragonfruit pieces floating',
+        commonMistakes: ['Not emptying entire shaker', 'Forgetting dragonfruit garnish']
+      }
+    ],
+    nutrition: {
+      calories: 90,
+      fat: 0,
+      carbs: 21,
+      protein: 0,
+      caffeine: 35,
+      sugar: 19
+    },
+    customization: {
+      sizes: ['Tall', 'Grande', 'Venti'],
+      milkOptions: ['Coconut Milk', 'Lemonade instead of water'],
+      syrupOptions: ['None (standard)', 'Add sweetener if desired'],
+      extraShots: false,
+      decaf: false,
+      iced: true,
+      extraHot: false
+    },
+    tips: [
+      'Contains natural caffeine from green coffee extract',
+      'Dragonfruit pieces provide visual appeal and subtle texture',
+      'Popular modification: substitute coconut milk for water (Dragon Drink)',
+      'Base contains real fruit juice and natural flavors',
+      'Shake base concentrate before each use to prevent separation',
+      'Refreshers are designed to be energizing and refreshing',
+      'Freeze-dried fruit rehydrates slightly when added to liquid'
+    ],
+    difficulty: 'beginner',
+    estimatedTime: 40,
+    temperature: 'cold',
+    caffeineLevel: 'low'
+  },
+
+  {
+    id: 'matcha-green-tea-latte',
+    name: 'Matcha Green Tea Latte',
+    category: 'tea',
+    isSeasonal: false,
+    description: 'Premium matcha powder whisked with steamed milk for a creamy, energizing green tea experience',
+    emoji: '🍵',
+    imageUrl: '/drinks/matcha-latte.jpg',
+    ingredients: [
+      { name: 'Matcha Green Tea Powder', amount: 2, unit: 'scoops', type: 'base', isOptional: false },
+      { name: 'Classic Syrup', amount: 3, unit: 'pumps', type: 'syrup', isOptional: false },
+      { name: '2% Milk', amount: 1, unit: 'cup', type: 'milk', isOptional: false },
+      { name: 'Hot Water', amount: 2, unit: 'oz', type: 'base', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'prepare-matcha-base',
+        order: 1,
+        instruction: 'Add matcha powder and classic syrup to cup',
+        duration: 5,
+        technique: 'Use proper matcha scoop for consistent flavor strength',
+        visualCue: 'Bright green powder with clear syrup in cup bottom',
+        commonMistakes: ['Wrong matcha amount', 'Skipping sweetener']
+      },
+      {
+        id: 'add-hot-water',
+        order: 2,
+        instruction: 'Add small amount of hot water (175°F) to create paste',
+        duration: 8,
+        temperature: 175,
+        technique: 'Just enough water to create smooth paste, not full liquid',
+        visualCue: 'Thick green paste without lumps'
+      },
+      {
+        id: 'whisk-matcha',
+        order: 3,
+        instruction: 'Whisk matcha paste vigorously until smooth and frothy',
+        duration: 20,
+        technique: 'Use back-and-forth whisking motion to eliminate all lumps',
+        visualCue: 'Smooth, bright green mixture with slight froth on top',
+        commonMistakes: ['Not whisking enough', 'Leaving lumps', 'Wrong water temperature']
+      },
+      {
+        id: 'steam-milk-matcha',
+        order: 4,
+        instruction: 'Steam milk to 150°F with light microfoam',
+        duration: 30,
+        temperature: 150,
+        technique: 'Gentle steaming preserves delicate matcha flavor',
+        visualCue: 'Creamy milk with minimal foam'
+      },
+      {
+        id: 'combine-matcha-latte',
+        order: 5,
+        instruction: 'Pour steamed milk slowly into matcha base, stirring gently',
+        duration: 15,
+        technique: 'Slow pour maintains matcha suspension and creates smooth texture',
+        visualCue: 'Beautiful green latte with uniform color throughout',
+        commonMistakes: ['Pouring too fast', 'Matcha settling to bottom']
+      },
+      {
+        id: 'final-stir',
+        order: 6,
+        instruction: 'Give final gentle stir to ensure matcha is fully integrated',
+        duration: 5,
+        technique: 'Light stirring prevents matcha from separating',
+        visualCue: 'Vibrant green color uniform throughout drink'
+      }
+    ],
+    nutrition: {
+      calories: 240,
+      fat: 7,
+      carbs: 37,
+      protein: 12,
+      caffeine: 80,
+      sugar: 32
+    },
+    customization: {
+      sizes: ['Short', 'Tall', 'Grande', 'Venti'],
+      milkOptions: ['2% Milk', 'Nonfat Milk', 'Soy Milk', 'Almond Milk', 'Oatmilk', 'Coconut Milk'],
+      syrupOptions: ['Classic', 'Vanilla', 'Honey', 'Sugar-Free Vanilla'],
+      extraShots: false,
+      decaf: false,
+      iced: true,
+      extraHot: false
+    },
+    tips: [
+      'Matcha quality varies significantly - premium grade creates better flavor',
+      'Proper whisking technique eliminates grittiness and creates smooth texture',
+      'Water temperature is crucial - too hot destroys delicate matcha compounds',
+      'Matcha contains L-theanine which provides calm, focused energy',
+      'Can be made iced by whisking with cold water and adding cold milk',
+      'Fresh matcha powder should be vibrant green, not yellowed or brown',
+      'Traditional preparation uses bamboo whisk, but modern methods work well'
+    ],
+    difficulty: 'intermediate',
+    estimatedTime: 85,
+    temperature: 'hot',
+    caffeineLevel: 'medium'
+  },
+
+  {
+    id: 'vanilla-bean-frappuccino',
+    name: 'Vanilla Bean Frappuccino',
+    category: 'frappuccino',
+    isSeasonal: false,
+    description: 'Creamy vanilla bean powder blended with milk and ice, topped with whipped cream - no coffee',
+    emoji: '🍦',
+    imageUrl: '/drinks/vanilla-bean-frappuccino.jpg',
+    ingredients: [
+      { name: 'Vanilla Bean Powder', amount: 3, unit: 'scoops', type: 'base', isOptional: false },
+      { name: 'Classic Syrup', amount: 3, unit: 'pumps', type: 'syrup', isOptional: false },
+      { name: '2% Milk', amount: 1, unit: 'cup', type: 'milk', isOptional: false },
+      { name: 'Ice', amount: 2, unit: 'cups', type: 'extra', isOptional: false },
+      { name: 'Whipped Cream', amount: 1, unit: 'dollop', type: 'topping', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'add-vanilla-powder',
+        order: 1,
+        instruction: 'Add vanilla bean powder to blender: Tall (2), Grande (3), Venti (4) scoops',
+        duration: 5,
+        technique: 'Vanilla bean powder provides rich vanilla flavor and speckled appearance',
+        visualCue: 'Light colored powder with visible vanilla bean specks'
+      },
+      {
+        id: 'add-classic-syrup',
+        order: 2,
+        instruction: 'Add classic syrup for sweetness: Tall (2), Grande (3), Venti (4) pumps',
+        duration: 5,
+        technique: 'Classic syrup adds necessary sweetness to balance vanilla',
+        visualCue: 'Clear syrup mixing with vanilla powder'
+      },
+      {
+        id: 'add-milk-blend',
+        order: 3,
+        instruction: 'Add cold milk and ice, then blend until smooth and creamy',
+        duration: 45,
+        technique: 'Blend until completely smooth with signature Frappuccino texture',
+        visualCue: 'Smooth, thick, milkshake-like consistency with vanilla specks'
+      },
+      {
+        id: 'pour-and-top',
+        order: 4,
+        instruction: 'Pour into cup and top with generous whipped cream dome',
+        duration: 10,
+        technique: 'Fill cup completely, then add whipped cream above rim',
+        visualCue: 'Creamy white drink with white whipped cream dome'
+      }
+    ],
+    nutrition: {
+      calories: 400,
+      fat: 16,
+      carbs: 59,
+      protein: 6,
+      caffeine: 0,
+      sugar: 57
+    },
+    customization: {
+      sizes: ['Tall', 'Grande', 'Venti'],
+      milkOptions: ['2% Milk', 'Nonfat Milk', 'Soy Milk', 'Almond Milk', 'Oatmilk'],
+      syrupOptions: ['Extra Vanilla Bean', 'Add Caramel', 'Add Hazelnut'],
+      extraShots: false,
+      decaf: false,
+      iced: false,
+      extraHot: false
+    },
+    tips: [
+      'This is a coffee-free Frappuccino - perfect for non-coffee drinkers',
+      'Vanilla bean powder contains real vanilla bean specks for authentic flavor',
+      'Popular with children and those avoiding caffeine',
+      'Can add espresso shots to create a Vanilla Bean Latte Frappuccino'
+    ],
+    difficulty: 'beginner',
+    estimatedTime: 70,
+    temperature: 'blended',
+    caffeineLevel: 'none'
+  },
+
+  {
+    id: 'paradise-drink-refresher',
+    name: 'Paradise Drink Refresher',
+    category: 'refresher',
+    isSeasonal: false,
+    description: 'Pineapple Passionfruit refresher base shaken with coconut milk for a tropical paradise experience',
+    emoji: '🏝️',
+    imageUrl: '/drinks/paradise-drink.jpg',
+    ingredients: [
+      { name: 'Pineapple Passionfruit Base', amount: 1, unit: 'cup', type: 'base', isOptional: false },
+      { name: 'Coconut Milk', amount: 0.5, unit: 'cup', type: 'milk', isOptional: false },
+      { name: 'Ice', amount: 1, unit: 'cup', type: 'extra', isOptional: false },
+      { name: 'Freeze-dried Pineapple', amount: 1, unit: 'scoop', type: 'topping', isOptional: false }
+    ],
+    steps: [
+      {
+        id: 'prepare-shaker',
+        order: 1,
+        instruction: 'Fill shaker with ice and add Pineapple Passionfruit base',
+        duration: 8,
+        technique: 'Shake base concentrate before use to ensure consistency',
+        visualCue: 'Golden yellow liquid with tropical pineapple aroma'
+      },
+      {
+        id: 'add-coconut-milk',
+        order: 2,
+        instruction: 'Add coconut milk to replace water portion',
+        duration: 5,
+        technique: 'Shake coconut milk container before adding',
+        visualCue: 'Creamy white coconut milk creating layered appearance'
+      },
+      {
+        id: 'shake-and-serve',
+        order: 3,
+        instruction: 'Shake vigorously and pour with pineapple garnish',
+        duration: 20,
+        technique: 'Strong shaking ensures proper blending of coconut milk',
+        visualCue: 'Creamy tropical colored drink with pineapple pieces floating'
+      }
+    ],
+    nutrition: {
+      calories: 150,
+      fat: 3.5,
+      carbs: 30,
+      protein: 1,
+      caffeine: 35,
+      sugar: 27
+    },
+    customization: {
+      sizes: ['Tall', 'Grande', 'Venti'],
+      milkOptions: ['Coconut Milk (standard)', 'Oatmilk'],
+      syrupOptions: ['None (standard)'],
+      extraShots: false,
+      decaf: false,
+      iced: true,
+      extraHot: false
+    },
+    tips: [
+      'Paradise Drink is the coconut milk version of Pineapple Passionfruit Refresher',
+      'Contains natural caffeine from green coffee extract',
+      'Popular summer drink with tropical vacation vibes',
+      'Shake coconut milk thoroughly before each use'
+    ],
+    difficulty: 'beginner',
+    estimatedTime: 35,
+    temperature: 'cold',
+    caffeineLevel: 'low'
+  }]
 
 // Helper functions
 export function getDrinksByCategory(category: string): StarbucksDrink[] {
