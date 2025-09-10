@@ -884,13 +884,14 @@ body {
 /* Enhanced homepage styles */
 .hero-section {
   text-align: center;
-  padding: 4rem 0 6rem;
+  padding: 5rem 0 6rem;
   background: var(--gradient-hero);
   color: white;
   border-radius: var(--radius-2xl);
   margin: 2rem 0;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-xl);
 }
 
 .hero-section::before {
@@ -901,6 +902,12 @@ body {
   right: 0;
   bottom: 0;
   background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.03"><path d="M30 30c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z"/></g></g></svg>');
+  animation: floatPattern 20s ease-in-out infinite;
+}
+
+@keyframes floatPattern {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(180deg); }
 }
 
 .hero-content {
@@ -923,10 +930,22 @@ body {
   font-weight: 500;
   margin-bottom: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 .hero-badge-icon {
   font-size: 1rem;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
 }
 
 .hero-title {
@@ -1060,8 +1079,9 @@ body {
 }
 
 .feature-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-8px);
+  border-color: var(--starbucks-green);
 }
 
 .feature-card::before {
@@ -1072,6 +1092,13 @@ body {
   right: 0;
   height: 4px;
   background: var(--gradient-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
 }
 
 .feature-icon {
@@ -1084,6 +1111,31 @@ body {
   justify-content: center;
   margin: 0 auto 1.5rem;
   font-size: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: var(--shadow-lg);
+}
+
+.feature-icon::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.feature-card:hover .feature-icon::after {
+  animation: shine 0.6s ease-in-out;
 }
 
 .feature-title {
@@ -1135,9 +1187,27 @@ body {
   overflow: hidden;
 }
 
+.drink-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
 .drink-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-8px);
+  border-color: transparent;
+}
+
+.drink-card:hover::before {
+  transform: scaleX(1);
 }
 
 .drink-card-header {
@@ -1156,6 +1226,38 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 1.75rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.drink-card:hover .drink-icon {
+  background: var(--gradient-primary);
+  transform: rotate(10deg) scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.drink-icon::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.drink-card:hover .drink-icon::after {
+  animation: shine 0.6s ease-in-out;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
 }
 
 .drink-badges {

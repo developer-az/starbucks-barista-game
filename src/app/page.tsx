@@ -31,16 +31,16 @@ export default function HomePage() {
           </div>
           <div className="hero-stats">
             <div className="hero-stat">
-              <div className="hero-stat-number">15+</div>
+              <div className="hero-stat-number">25+</div>
               <div className="hero-stat-label">Signature Recipes</div>
             </div>
             <div className="hero-stat">
-              <div className="hero-stat-number">100+</div>
+              <div className="hero-stat-number">150+</div>
               <div className="hero-stat-label">Training Questions</div>
             </div>
             <div className="hero-stat">
-              <div className="hero-stat-number">6</div>
-              <div className="hero-stat-label">Learning Modules</div>
+              <div className="hero-stat-number">8</div>
+              <div className="hero-stat-label">Drink Categories</div>
             </div>
           </div>
         </div>
@@ -126,12 +126,36 @@ export default function HomePage() {
               time: '90s'
             },
             {
-              name: 'Pumpkin Spice Latte',
-              description: 'Signature espresso with pumpkin spice sauce and whipped cream',
-              icon: '🎃',
+              name: 'Apple Crisp Oatmilk Macchiato',
+              description: 'Seasonal espresso with apple brown sugar and spiced drizzle',
+              icon: '🍎',
               category: 'Seasonal',
+              difficulty: 'Intermediate',
+              time: '100s'
+            },
+            {
+              name: 'Dragon Drink',
+              description: 'Mango Dragonfruit Refresher with creamy coconut milk',
+              icon: '🐲',
+              category: 'Refresher',
               difficulty: 'Beginner',
+              time: '40s'
+            },
+            {
+              name: 'Matcha Latte',
+              description: 'Premium matcha green tea powder with steamed milk',
+              icon: '🍵',
+              category: 'Tea',
+              difficulty: 'Intermediate',
               time: '90s'
+            },
+            {
+              name: 'Vanilla Bean Frappuccino',
+              description: 'Caffeine-free blended beverage with real vanilla bean',
+              icon: '🥤',
+              category: 'Frappuccino',
+              difficulty: 'Beginner',
+              time: '75s'
             }
           ].map((drink, index) => (
             <div key={index} className="drink-card">
